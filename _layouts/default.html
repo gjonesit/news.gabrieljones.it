@@ -1,51 +1,222 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - Jones Activicy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --yellow: #f8df81;
+            --red: #c43421;
+            --dark-blue: #c43421;
+            --orange: #d35400;
+            --gray-bg: #fdfdfd;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
 
-    {% include meta.html %}
+        body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--gray-bg); scroll-behavior: smooth; overflow-x: hidden; }
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        /* --- HEADER --- */
+        .header-top { 
+            background: var(--yellow); 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 20px 5%; 
+            gap: 15px;
+        }
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+        body a {
+            text-decoration: none;
+            color: inherit; /* Mantiene il colore del testo circostante */
+        }
+        .social-icons { flex: 1; display: flex; gap: 15px; }
+        .social-icons a { color: #444; text-decoration: none; font-size: 20px; transition: 0.3s; }
+        .social-icons a:hover { color: var(--red); }
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+        .logo-area { text-align: center; flex: 2; }
+        .logo-area h1 { font-size: clamp(28px, 5vw, 60px); color: var(--orange); margin: 0; font-weight: 900; letter-spacing: -2px; line-height: 1; }
+        .logo-area p { font-weight: 700; color: var(--dark-blue); margin: 5px 0 0; text-transform: uppercase; font-size: clamp(10px, 2vw, 14px); letter-spacing: 1px; }
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+        .user-area { flex: 1; text-align: right; }
+        .user-icon { font-size: clamp(30px, 4vw, 45px); color: var(--red); cursor: pointer; transition: 0.3s; }
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+        /* --- NAVIGATION --- */
+        .main-nav { background: var(--red); position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        /* Checkbox per menu mobile senza JS */
+        #menu-toggle { display: none; }
+        .menu-button { display: none; color: white; font-size: 24px; padding: 15px; cursor: pointer; text-align: center; }
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
-      </div>
+        .main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
+        .main-nav li a { display: block; color: white; text-decoration: none; padding: 18px 25px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .main-nav li a:hover { background: rgba(0,0,0,0.1); }
+
+        /* --- CONTENT --- */
+        .magazine-grid { max-width: 1200px; margin: 40px auto; padding: 0 5%; min-height: 300px; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--dark-blue); color: white; padding: 60px 5% 30px; margin-top: 100px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 50px; }
+        .footer-col h2, .footer-col h4 { margin-top: 0; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .header-top { flex-wrap: wrap; padding: 15px 5%; }
+            .social-icons { order: 2; flex: 1; justify-content: flex-start; }
+            .user-area { order: 3; flex: 1; }
+            .logo-area { order: 1; flex: 1 1 100%; margin-bottom: 10px; }
+
+            .menu-button { display: block; background: var(--red); }
+            .main-nav ul { 
+                display: none; 
+                flex-direction: column; 
+                text-align: center; 
+                background: var(--red);
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            /* Mostra menu quando checkbox è spuntata */
+            #menu-toggle:checked ~ ul { display: flex; }
+            .main-nav li a { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            
+            .footer-grid { text-align: center; }
+            .footer-col { display: flex; flex-direction: column; align-items: center; }
+        }
+.top-bar {
+    background: var(--yellow);
+    border-bottom: 3px solid #1a1a1a;
+    padding: 8px 5%;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.top-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar-left i {
+    margin-right: 8px;
+    color: var(--red);
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-bar-right a {
+    color: #1a1a1a;
+    transition: 0.2s;
+}
+
+.top-bar-right a:hover {
+    color: var(--red);
+}
+
+.separator {
+    opacity: 0.3;
+}
+
+.top-bar-social {
+    display: flex;
+    gap: 10px;
+}
+
+/* Nascondi elementi su mobile se lo spazio è poco */
+@media (max-width: 600px) {
+    .top-bar-left {
+        display: none; /* Nasconde il testo a sinistra su schermi piccoli */
+    }
+    .top-bar-content {
+        justify-content: center;
+    }
+}
+    </style>
+</head>
+<body>
+
+<header>
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-left">
+            <span><a href="https://gabrieljones.it"><i class="fas fa-bolt"></i> gabrieljones.it</a></span>
+        </div>
+        <div class="top-bar-right">
+            <a href="https://ufficio.gabrieljones.it"><i class="fas fa-bolt"></i> il mio ufficio</a>
+        </div>
     </div>
-
-    <div id="main" role="main" class="container">
-      {{ content }}
+</div>
+    <div class="header-top">
+        <div class="social-icons">
+            <a href="https://www.youtube.com/@dagabrieljones" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/onlygabbyme/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="logo-area">
+            <br>
+            <h1>Jones Activity</h1>
+            <p>Mi piace fare un po' tutto!</p>
+        </div>
+        <div class="user-area">
+            <a><i class="fas fa-user-circle user-icon"></i></a>
+        </div>
     </div>
+    
+    <nav class="main-nav">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-button">
+            <i class="fas fa-bars"></i> MENU
+        </label>
+        
+        <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="https://gabrieljones.it/about/">Chi sono</a></li>
+            <li><a href="{{ site.url }}/categorie/infanzia/">Infanzia</a></li>
+            <li><a href="{{ site.url }}/categorie/grafica/">grafica</a></li>
+            <li><a href="{{ site.url }}/categorie/">Categorie</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
+<main class="magazine-grid">
+{{ content }}
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h2 style="color:var(--yellow); font-weight:900;">Jones Activity</h2>
+            <p style="opacity:0.7;">Ciao, sono Gabriel, un po' strano, o stravagante, anche se adoro fare tante cose.</p>
+        </div>
+        <div class="footer-col">
+            <h4 style="color:var(--yellow)">CATEGORIE</h4>
+            <div style="line-height: 1.8; opacity: 0.8;">
+                <a href="/categorie/grafica/">Grafica</a><br><a href="/categorie/infanzia/">Infanzia</a><br><a href="/categorie/18Y/">18anni</a><!--<br><a href="">Giornate</a>-->
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4 style="color:var(--yellow)">SOCIAL</h4>
+            <div style="display:flex; gap:20px; font-size:24px;">
+                <i class="fab fa-facebook" style="cursor:pointer"></i>
+                <i class="fab fa-twitter" style="cursor:pointer"></i>
+                <i class="fab fa-youtube" style="cursor:pointer"></i>
+            </div>
+        </div>
     </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; font-size:12px; opacity:0.5; text-align: center;">
+        © 2026 Ufficio Digitale di Gabriel Jones - Tutti i diritti riservati.
+    </div>
+</footer>
 
-    {% include analytics.html %}
-  </body>
+</body>
 </html>

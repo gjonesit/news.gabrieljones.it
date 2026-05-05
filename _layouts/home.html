@@ -1,0 +1,109 @@
+---
+layout: default
+---
+<section style="grid-column: 1 / -1; margin-top: 80px; margin-bottom: 60px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+        <h3 style="font-size: 24px; font-weight: 900; text-transform: uppercase;">Ultimo Video</h3>
+        <a href="https://www.youtube.com/@dagabrieljones" style="color: var(--red); font-weight: 800; text-decoration: none;">Vedi il canale <i class="fab fa-youtube"></i></a>
+    </div>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 25px; border: 4px solid #1a1a1a; background: #000;">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+    
+<div style="grid-column: 1 / -1; margin-top: 50px;">
+    <h2 style="text-align: center; color: var(--red); font-size: clamp(28px, 5vw, 40px); font-weight: 900; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 3px;">
+        Latest News
+    </h2>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto;">
+
+    {% for post in site.posts limit:3 %}
+    <article style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        
+        <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 30px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
+            <img src="{{ post.image | default: 'https://via.placeholder.com/600' }}" 
+                 alt="{{ post.title }}"
+                 style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+        </div>
+        
+        <h3 style="font-size: 24px; color: #1a1a1a; margin: 0 0 12px 0; font-weight: 900; line-height: 1.1; letter-spacing: -0.5px;">
+            {{ post.title }}
+        </h3>
+        
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <span style="font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1.5px;">
+                {{ post.date | date: "%-d %B, %Y" }}
+            </span>
+        </div>
+        
+        <div style="width: 30px; height: 2px; background: var(--red, #e74c3c); margin-bottom: 20px;"></div>
+        
+        <p style="font-size: 15px; color: #555; line-height: 1.7; margin: 0 0 30px 0; max-width: 300px; font-weight: 400;">
+            {{ post.excerpt | strip_html | truncate: 120 }}
+        </p>
+        
+        <a href="{{ post.url | relative_url }}" style="background: var(--yellow, #f1c40f); color: #1a1a1a; padding: 12px 35px; text-decoration: none; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border: 2px solid #1a1a1a;">
+            Read More
+        </a>
+
+    </article>
+    {% endfor %}
+
+</div>
+
+</div>
+
+
+
+<!--<section style="grid-column: 1 / -1; margin-top: 80px;">
+    <h3 style="text-align: center; font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Esplora per Temi</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        
+        <a href="#" style="text-decoration:none; background: #1a1a1a; color: white; padding: 40px 20px; border-radius: 20px; text-align: center; transition: 0.3s;">
+            <i class="fas fa-rocket" style="font-size: 30px; color: var(--yellow); margin-bottom: 15px; display: block;"></i>
+            <span style="font-weight: 900; text-transform: uppercase; font-size: 14px;">Innovazione</span>
+        </a>
+
+        <a href="#" style="text-decoration:none; background: var(--red); color: white; padding: 40px 20px; border-radius: 20px; text-align: center; transition: 0.3s;">
+            <i class="fas fa-republican" style="font-size: 30px; color: white; margin-bottom: 15px; display: block;"></i>
+            <span style="font-weight: 900; text-transform: uppercase; font-size: 14px;">Storia</span>
+        </a>
+
+        <a href="#" style="text-decoration:none; background: var(--yellow); color: #1a1a1a; padding: 40px 20px; border-radius: 20px; text-align: center; transition: 0.3s; border: 2px solid #1a1a1a;">
+            <i class="fas fa-child" style="font-size: 30px; margin-bottom: 15px; display: block;"></i>
+            <span style="font-weight: 900; text-transform: uppercase; font-size: 14px;">Infanzia</span>
+        </a>
+
+        <a href="#" style="text-decoration:none; background: #f0f0f0; color: #1a1a1a; padding: 40px 20px; border-radius: 20px; text-align: center; transition: 0.3s;">
+            <i class="fas fa-brain" style="font-size: 30px; color: var(--red); margin-bottom: 15px; display: block;"></i>
+            <span style="font-weight: 900; text-transform: uppercase; font-size: 14px;">Curiosità</span>
+        </a>
+    </div>
+</section>-->
+
+<section style="grid-column: 1 / -1; margin-top: 80px; background: white; border: 4px solid #1a1a1a; border-radius: 30px; display: flex; flex-wrap: wrap; overflow: hidden; box-shadow: 15px 15px 0px var(--yellow);">
+    <div style="flex: 1; min-width: 300px; padding: 60px;">
+        <span style="color: var(--red); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; font-size: 12px;">L'Autore</span>
+        <h2 style="font-size: 48px; font-weight: 900; color: #1a1a1a; margin: 10px 0 25px; line-height: 1;">Mi piace fare un po' tutto.</h2>
+        <p style="font-size: 18px; color: #444; line-height: 1.6; margin-bottom: 30px;">
+            Dall'innovazione tecnologica alle leggende del passato, Jones Activity è lo spazio dove esploro ogni mia passione. Non c'è limite a quello che si può imparare.
+        </p>
+        <a href="/about" style="display: inline-block; padding: 15px 40px; background: #1a1a1a; color: white; text-decoration: none; font-weight: 900; border-radius: 10px; text-transform: uppercase;">Scopri di più</a>
+    </div>
+    <div style="flex: 1; min-width: 300px; background: url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=800') center/cover; min-height: 300px;"></div>
+</section>
+
+<!--<section style="grid-column: 1 / -1; margin-top: 80px; background: var(--red); padding: 60px 20px; border-radius: 30px; text-align: center; color: white;">
+    <h2 style="font-size: clamp(30px, 5vw, 50px); font-weight: 900; text-transform: uppercase; margin-bottom: 10px;">Resta nel Loop</h2>
+    <p style="font-size: 18px; margin-bottom: 40px; opacity: 0.9;">Ricevi una notifica ogni volta che pubblico qualcosa di folle.</p>
+    <div style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap;">
+        <input type="email" placeholder="Inserisci la tua email" style="flex: 2; padding: 20px; border-radius: 12px; border: none; font-family: inherit; font-size: 16px;">
+        <button style="flex: 1; background: var(--yellow); color: #1a1a1a; border: none; padding: 20px; border-radius: 12px; font-weight: 900; text-transform: uppercase; cursor: pointer; min-width: 150px;">Iscriviti</button>
+    </div>
+</section>-->
+    

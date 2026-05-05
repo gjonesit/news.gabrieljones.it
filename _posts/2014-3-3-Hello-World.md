@@ -1,6 +1,8 @@
 ---
 layout: post
 title: You're up and running!
+date: 2023-12-06
+image: "https://images.unsplash.com/photo-1544244015-0cd4b3ffc6b0?..."
 ---
 
 Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
