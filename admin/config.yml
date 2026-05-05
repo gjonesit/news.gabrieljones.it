@@ -6,7 +6,7 @@ media_folder: "images"
 public_folder: "/images"
 
 site_url: ""
-logo_url: "/images/logo.png" # opzionale
+logo_url: "/assets/img/gjones_selfie.png" # opzionale
 
 collections:
   - name: "posts"
@@ -19,5 +19,6 @@ collections:
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
       - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Immagine", name: "image", widget: "image" }
       - { label: "Data", name: "date", widget: "datetime" }
       - { label: "Contenuto", name: "body", widget: "markdown" }

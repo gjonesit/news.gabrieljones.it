@@ -1,0 +1,23 @@
+.post {
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: white;
+  padding: 20px;
+}
+
+.post-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.meta {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.post-content {
+  font-size: 18px;
+  line-height: 1.6;
+}
