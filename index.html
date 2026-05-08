@@ -1,18 +1,160 @@
 ---
 layout: default
+title: Home
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<main class="magazine-grid">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+<!-- HERO ULTIMO POST -->
+{% assign latest = site.posts.first %}
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+<section style="grid-column: 1 / -1; margin-top: 40px; margin-bottom: 80px;">
+    
+    <div style="background:white; border-radius:30px; overflow:hidden; border:4px solid #1a1a1a; box-shadow:15px 15px 0px var(--yellow); display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+        <div style="padding:60px; display:flex; flex-direction:column; justify-content:center;">
+            
+            <span style="font-size:12px; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:15px;">
+                Ultimo Post
+            </span>
+
+            <h1 style="font-size:clamp(36px,5vw,60px); line-height:1; margin:0 0 20px; font-weight:900;">
+                {{ latest.title }}
+            </h1>
+
+            <p style="font-size:18px; line-height:1.7; color:#555; margin-bottom:30px;">
+                {{ latest.excerpt | strip_html | truncate: 180 }}
+            </p>
+
+            <div style="margin-bottom:30px; font-size:13px; font-weight:700; text-transform:uppercase; color:#888;">
+                {{ latest.date | date: "%d %B %Y" }}
+            </div>
+
+            <a href="{{ latest.url }}"
+               style="display:inline-block; width:max-content; background:var(--yellow); padding:16px 40px; border:2px solid #1a1a1a; font-weight:900; text-transform:uppercase;">
+                Leggi ora
+            </a>
+
+        </div>
+
+        <div style="min-height:400px;">
+            <img src="{{ latest.image | default: '/images/img_1010.jpg' }}"
+                 alt="{{ latest.title }}"
+                 style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ULTIMO VIDEO -->
+<section style="grid-column: 1 / -1; margin-bottom: 60px;">
+    
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:25px;">
+        <h3 style="font-size:24px; font-weight:900; text-transform:uppercase;">
+            Ultimo Video
+        </h3>
+
+        <a href="https://www.youtube.com/@dagabrieljones"
+           style="font-weight:800; color:var(--red);">
+            Vai al canale
+        </a>
+    </div>
+
+    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:25px; border:4px solid #1a1a1a;">
+        <iframe 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            style="position:absolute; top:0; left:0; width:100%; height:100%;"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+</section>
+
+<!-- TUTTI I POST -->
+<section style="grid-column:1 / -1;">
+
+    <h2 style="text-align:center; font-size:clamp(32px,5vw,50px); font-weight:900; color:var(--red); text-transform:uppercase; margin-bottom:60px;">
+        Latest News
+    </h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:50px;">
+
+        {% for post in site.posts %}
+
+        <article style="background:white; border-radius:25px; overflow:hidden; box-shadow:var(--card-shadow); transition:0.3s; display:flex; flex-direction:column;">
+
+            <a href="{{ post.url }}">
+
+                <div style="aspect-ratio:1/1; overflow:hidden;">
+                    <img src="{{ post.image | default: '/images/img_1010.jpg' }}"
+                         alt="{{ post.title }}"
+                         style="width:100%; height:100%; object-fit:cover;">
+                </div>
+
+            </a>
+
+            <div style="padding:30px; display:flex; flex-direction:column; flex:1;">
+
+                <span style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#888; font-weight:700; margin-bottom:15px;">
+                    {{ post.date | date: "%d %B %Y" }}
+                </span>
+
+                <h3 style="font-size:28px; line-height:1.1; margin:0 0 20px; font-weight:900;">
+                    <a href="{{ post.url }}">
+                        {{ post.title }}
+                    </a>
+                </h3>
+
+                <p style="font-size:15px; color:#555; line-height:1.7; flex:1;">
+                    {{ post.excerpt | strip_html | truncate: 120 }}
+                </p>
+
+                <a href="{{ post.url }}"
+                   style="margin-top:30px; display:inline-block; background:var(--yellow); border:2px solid #1a1a1a; padding:14px 28px; font-size:13px; font-weight:900; text-transform:uppercase; width:max-content;">
+                    Read More
+                </a>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section style="grid-column: 1 / -1; margin-top: 100px; background: white; border: 4px solid #1a1a1a; border-radius: 30px; display: flex; flex-wrap: wrap; overflow: hidden; box-shadow: 15px 15px 0px var(--yellow);">
+
+    <div style="flex:1; min-width:300px; padding:60px;">
+
+        <span style="color: var(--red); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; font-size: 12px;">
+            L'Autore
+        </span>
+
+        <h2 style="font-size:48px; font-weight:900; margin:10px 0 25px; line-height:1;">
+            Mi piace fare un po' tutto.
+        </h2>
+
+        <p style="font-size:18px; color:#444; line-height:1.7; margin-bottom:30px;">
+            Dall'innovazione alla grafica, passando per idee folli e curiosità. Questo è il mio spazio personale.
+        </p>
+
+        <a href="/about"
+           style="display:inline-block; padding:15px 40px; background:#1a1a1a; color:white; border-radius:10px; font-weight:900; text-transform:uppercase;">
+            Scopri di più
+        </a>
+
+    </div>
+
+    <div style="flex:1; min-width:300px;">
+        <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=1200&q=80"
+             style="width:100%; height:100%; object-fit:cover;">
+    </div>
+
+</section>
+
+</main>
